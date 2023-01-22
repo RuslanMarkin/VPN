@@ -51,6 +51,8 @@
 		8C181A27297DED7500C6B828 /* VPN */ = {
 			isa = PBXGroup;
 			children = (
+				8C181A37297DEE6400C6B828 /* View */,
+				8C181A36297DEE5700C6B828 /* Network */,
 				8C181A28297DED7500C6B828 /* VPNApp.swift */,
 				8C181A2A297DED7500C6B828 /* ContentView.swift */,
 				8C181A2C297DED7600C6B828 /* Assets.xcassets */,
@@ -65,6 +67,20 @@
 				8C181A2F297DED7600C6B828 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8C181A36297DEE5700C6B828 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8C181A37297DEE6400C6B828 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
