@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var buttonTapped = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button("Connect VPN") {
+                buttonTapped.toggle()
+            }
+            if buttonTapped {
+                Text("VPN proccesing")
+                    .font(.largeTitle)
+            }
+            
         }
         .padding()
     }
