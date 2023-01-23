@@ -15,6 +15,7 @@ struct ContentView: View {
             Button("Connect VPN") {
                 buttonTapped.toggle()
             }
+            .buttonStyle(CustomButtonStyle())
             if buttonTapped {
                 Text("VPN proccesing")
                     .font(.largeTitle)
