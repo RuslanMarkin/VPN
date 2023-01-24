@@ -16,11 +16,11 @@ struct ContentView: View {
                 buttonTapped.toggle()
             }
             .buttonStyle(CustomButtonStyle())
-            if buttonTapped {
-                Text("VPN proccesing")
-                    .font(.largeTitle)
-            }
-            
+//            if buttonTapped {
+//                Text("VPN proccesing")
+//                    .font(.largeTitle)
+//            }
+//
         }
         .padding()
     }

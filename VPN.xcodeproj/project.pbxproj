@@ -53,6 +53,7 @@
 		8C181A27297DED7500C6B828 /* VPN */ = {
 			isa = PBXGroup;
 			children = (
+				8C3AAA21298074570008CA37 /* Folder */,
 				8C181A37297DEE6400C6B828 /* Styles */,
 				8C181A36297DEE5700C6B828 /* Network */,
 				8C181A28297DED7500C6B828 /* VPNApp.swift */,
@@ -84,6 +85,13 @@
 				8C3AAA1F297F0EAF0008CA37 /* CustomStyles.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		8C3AAA21298074570008CA37 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Folder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
