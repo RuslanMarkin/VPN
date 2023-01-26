@@ -7,24 +7,34 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
-    @State private var buttonTapped = false
-    
+    @ObservedObject var vpnStatus = VPNStatus()
     var body: some View {
-        VStack {
-            Button("Connect VPN") {
-                buttonTapped.toggle()
+        NavigationView {
+            VStack {
+                Text("VPN Status: \(vpnStatus.isConnected ? "Connected" : "Disconnected")")
+                    .font(.headline)
+                Image(vpnStatus.isConnected ? "connected" : "disconnected")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                Button(action: {
+                    self.vpnStatus.isConnected.toggle()
+                }) {
+                    Text(vpnStatus.isConnected ? "Disconnect" : "Connect")
+                }.buttonStyle(CustomButtonStyle())
             }
-            .buttonStyle(CustomButtonStyle())
-//            if buttonTapped {
-//                Text("VPN proccesing")
-//                    .font(.largeTitle)
-//            }
-//
         }
-        .padding()
+        
     }
 }
+
+class VPNStatus: ObservableObject {
+    @Published var isConnected = false
+}
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
