@@ -19,4 +19,12 @@ struct CustomButtonStyle: ButtonStyle {
             .animation(.easeOut(duration: 0.3), value: configuration.isPressed)
     }
 }
+//struct ServerListButton: ButtonStyle {
+//    func makeBody(configuration: Configuration) -> some View {
+//        configuration.label
+//            .padding()
+//            .clipShape(RoundedRectangle(cornerRadius: 15))
+//            .background(.blue)
+//    }
+//}
 
