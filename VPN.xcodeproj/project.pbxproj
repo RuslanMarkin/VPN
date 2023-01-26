@@ -14,6 +14,7 @@
 		8C3AAA20297F0EAF0008CA37 /* CustomStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAA1F297F0EAF0008CA37 /* CustomStyles.swift */; };
 		8C3AAA2429827D710008CA37 /* ServerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAA2329827D710008CA37 /* ServerSelectionView.swift */; };
 		8C3AAA2629827FB40008CA37 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAA2529827FB40008CA37 /* Network.swift */; };
+		8C3AAA2A298290A00008CA37 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAA29298290A00008CA37 /* KeyChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		8C3AAA1F297F0EAF0008CA37 /* CustomStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyles.swift; sourceTree = "<group>"; };
 		8C3AAA2329827D710008CA37 /* ServerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectionView.swift; sourceTree = "<group>"; };
 		8C3AAA2529827FB40008CA37 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		8C3AAA29298290A00008CA37 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3AAA2529827FB40008CA37 /* Network.swift */,
+				8C3AAA29298290A00008CA37 /* KeyChain.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C3AAA2629827FB40008CA37 /* Network.swift in Sources */,
+				8C3AAA2A298290A00008CA37 /* KeyChain.swift in Sources */,
 				8C3AAA2429827D710008CA37 /* ServerSelectionView.swift in Sources */,
 				8C181A2B297DED7500C6B828 /* ContentView.swift in Sources */,
 				8C3AAA20297F0EAF0008CA37 /* CustomStyles.swift in Sources */,
