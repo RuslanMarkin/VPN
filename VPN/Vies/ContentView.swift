@@ -12,6 +12,7 @@ import NetworkExtension
 struct ContentView: View {
     @ObservedObject var vpnStatus = VPNStatus()
     @State private var showSheet = false
+//    @State private var isConnected = false
     var body: some View {
         NavigationView {
             VStack {
@@ -23,6 +24,7 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
                 Button(action: {
+                    self.connect()
                     self.vpnStatus.isConnected.toggle()
                 }) {
                     Text(vpnStatus.isConnected ? "Disconnect" : "Connect")
@@ -48,8 +50,15 @@ struct ContentView: View {
             }
         }
     }
+    
+    
+    func connect() {
+        VPNHandler.shared.connectVPN()
+    }
         
 }
+
+    
 
 class VPNStatus: ObservableObject {
     @Published var isConnected = false

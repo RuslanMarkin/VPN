@@ -8,9 +8,12 @@
 import Foundation
 import NetworkExtension
 
+
+
 final class VPNHandler {
 
-    let vpnManager = NEVPNManager.shared()
+    private let vpnManager = NEVPNManager.shared()
+    static let shared = VPNHandler()
     
 
     func initVPNTunnelProviderManager() {
@@ -23,11 +26,11 @@ final class VPNHandler {
                 print("VPN Preferences error: 1")
             } else {
 
-                let IKEv2Protocol = NEVPNProtocolIKEv2()
+                let vpnProtocol = NEVPNProtocolIKEv2()
                 
-                IKEv2Protocol.username = "user"
-                IKEv2Protocol.passwordReference = "password".data(using: .utf8)?.base64EncodedData()
-                IKEv2Protocol.serverAddress = ""
+                vpnProtocol.username = "user"
+                vpnProtocol.passwordReference = "password".data(using: .utf8)?.base64EncodedData()
+                vpnProtocol.serverAddress = ""
                 
 //                IKEv2Protocol.username = vpnUser.username
 //                IKEv2Protocol.serverAddress = vpnServer.serverID //server tunneling Address
@@ -35,31 +38,31 @@ final class VPNHandler {
 //                IKEv2Protocol.localIdentifier = vpnUser.localID //Local id
                 
 
-                IKEv2Protocol.deadPeerDetectionRate = .low
-                IKEv2Protocol.authenticationMethod = .none
-                IKEv2Protocol.useExtendedAuthentication = true //if you are using sharedSecret method then make it false
-                IKEv2Protocol.disconnectOnSleep = false
+                vpnProtocol.deadPeerDetectionRate = .low
+                vpnProtocol.authenticationMethod = .none
+                vpnProtocol.useExtendedAuthentication = true //if you are using sharedSecret method then make it false
+                vpnProtocol.disconnectOnSleep = false
 
                 //Set IKE SA (Security Association) Params...
-                IKEv2Protocol.ikeSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256
-                IKEv2Protocol.ikeSecurityAssociationParameters.integrityAlgorithm = .SHA256
-                IKEv2Protocol.ikeSecurityAssociationParameters.diffieHellmanGroup = .group14
-                IKEv2Protocol.ikeSecurityAssociationParameters.lifetimeMinutes = 1440
+                vpnProtocol.ikeSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256
+                vpnProtocol.ikeSecurityAssociationParameters.integrityAlgorithm = .SHA256
+                vpnProtocol.ikeSecurityAssociationParameters.diffieHellmanGroup = .group14
+                vpnProtocol.ikeSecurityAssociationParameters.lifetimeMinutes = 1440
                 //IKEv2Protocol.ikeSecurityAssociationParameters.isProxy() = false
 
                 //Set CHILD SA (Security Association) Params...
-                IKEv2Protocol.childSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256
-                IKEv2Protocol.childSecurityAssociationParameters.integrityAlgorithm = .SHA256
-                IKEv2Protocol.childSecurityAssociationParameters.diffieHellmanGroup = .group14
-                IKEv2Protocol.childSecurityAssociationParameters.lifetimeMinutes = 1440
+                vpnProtocol.childSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256
+                vpnProtocol.childSecurityAssociationParameters.integrityAlgorithm = .SHA256
+                vpnProtocol.childSecurityAssociationParameters.diffieHellmanGroup = .group14
+                vpnProtocol.childSecurityAssociationParameters.lifetimeMinutes = 1440
 
                 let kcs = KeychainService()
                 //Save password in keychain...
 //                kcs.save(key: "VPN_PASSWORD", value: vpnUser.password)
                 //Load password from keychain...
-                IKEv2Protocol.passwordReference = kcs.load(key: "VPN_PASSWORD")
+                vpnProtocol.passwordReference = kcs.load(key: "VPN_PASSWORD")
 
-                self.vpnManager.protocolConfiguration = IKEv2Protocol
+                self.vpnManager.protocolConfiguration = vpnProtocol
                 self.vpnManager.localizedDescription = "Safe Login Configuration"
                 self.vpnManager.isEnabled = true
 
@@ -114,18 +117,19 @@ final class VPNHandler {
                         })
                     }
                 })
+               try? self.vpnManager.connection.startVPNTunnel()
             }
         } //END OF .loadFromPreferences //
 
     }
 
     //MARK:- Connect VPN
-    static func connectVPN() {
+     func connectVPN() {
         VPNHandler().initVPNTunnelProviderManager()
     }
 
     //MARK:- Disconnect VPN
-    static func disconnectVPN() {
+     func disconnectVPN() {
         VPNHandler().vpnManager.connection.stopVPNTunnel()
     }
 
